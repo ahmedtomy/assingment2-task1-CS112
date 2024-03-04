@@ -1,2 +1,109 @@
-#include <iostream>
+def menu():
+    while True:
+        #####the main menu#####
+        chossing=str(input("""\n[A] problem 1
+[B] problem 2
+[C] problem 3
+[D] problem 4
+[E] problem 5
+[F] problem 6 
+[G] Exit the program\n""")).upper() ##if the user  enter a number instead of letter it will give an error so we convert it to string and then to##
+                                  ##using upper() to make sure that  the user doesn't input anything other than A, B or C and a is the same as A##
+        if  chossing=="A":   #first problem
+                print("""
+            A+ > 90
+            A  > 85
+            B+  > 80
+            B  > 75
+            C+  > 70
+            C  > 65
+            D+  > 60
+            D > 55 
+            D- > 50
+        """) 
+                while True:   #making while loop
+                    mark=int(input('enter the mark you got\n'))   #taking an input to take the mark
+                    if mark>=90:
+                        print('your grade is A+')
+                    elif mark>=85 and mark<90:
+                        print('your grade is A')
+                    elif mark>=80 and mark<85:
+                        print('your grade is B+')
+                    elif mark>=75 and mark<80:
+                        print('your grade is B')
+                    elif mark>=70 and mark<75:
+                        print('your grade is C+')
+                    elif mark>=65 and mark<70:
+                        print('your grade is C')
+                    elif mark>=60 and mark<65:
+                        print('your grade is D+')
+                    elif mark>=55 and mark<60:
+                        print('your grade is D')
+                    elif mark>=50 and mark<55:
+                        print('your grade is D-')
+                    elif mark<50:
+                        print('your grade is F sorry you failed')
+                    break     
+        elif chossing=="B":    ##second problem##  
+            armstrong=int(input("enter your number:\n"))  ##to make sure that the number is a int##
+            arm=[int(digit) for digit in str(armstrong)]  ##to convert the number to list##
+            sum=0
+            for i in range(len(arm)):   ##calculating the sum of digits to the power length of list##                    sum+=arm[i]**len(arm)
+                sum+=arm[i]**(len(arm))
+            if sum!=armstrong: 
+                print("the number is not armstrong")
+            elif sum==armstrong:        
+                print("the number is armstrong")                   
+        elif chossing=="C":   ##third problem
+                num=int(input("\nEnter the number"))
+                sum=1
+                n=1
+                for i in range(num-1):
+                    if i%2==0:
+                        sum=sum-(1/(n+2))
+                    elif i%2==1:
+                        sum=sum+(1/(n+2))
+                    n=n+2
+                sum=sum*4    
+                print(f'the num you generated is {sum}')
+
+        elif chossing=="D":   ##fourth problem
+            word=str(input("enter your word:"))
+            new_word=[char for char in word]
+            while len(new_word)>0:
+                asci=ord(new_word[0])
+                if asci==90:
+                    asci=65
+                elif asci==122:
+                    asci=97
+                elif 64<asci<91 or 96<asci<123: 
+                    asci=ord(new_word[0])+1    ##convert the letter to the ascii value##
+                new_word.remove(new_word[0])    
+                cha=chr(asci)    
+                print(cha,end="")
+        elif chossing=="E":    ##fifth problem
+            first_list=input('please insert the elements in list 1 by space').split(' ')
+            second_list=input('please insert the elements in list 2 by space').split(' ')
+            print(f' {first_list} \n {second_list}')     ##to print both listes in front of the user##
+            if len(first_list) != len(second_list):
+                print("Lists are equal = False")
+            else:
+                i=0
+                while first_list[i] in second_list:      ##to  check if all element from list 1 are in list 2##
+                    i+=1
+                    if i==len(first_list):
+                        print("Lists are equal = True")
+                        break
+                else:
+                        print ("Lists are equal = False")
+        elif chossing=="F":    ##sixth problem
+            num=int(input("enter the number you want"))
+            i=1
+            while i<=num:           
+                if num/i==int(num/i):   ##to make sure the results  will be integer and not float##
+                    print(i,end=" ") 
+                i+=1               
+        elif chossing=="G":            ##if chossing g/G the program will be closed##
+            break
+menu()         
 
